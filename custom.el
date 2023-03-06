@@ -18,7 +18,7 @@
  '(mini-frame-show-parameters '((top . 10) (width . 0.7) (left . 0.5)))
  '(objed-cursor-color "#FF5E5E")
  '(package-selected-packages
-   '(ox-twbs catppuccin-theme mini-frame org-roam-ui org-roam exwm unicode-fonts ox-pandoc org-beautify-theme))
+   '(org-download ox-twbs catppuccin-theme mini-frame org-roam-ui org-roam exwm unicode-fonts ox-pandoc org-beautify-theme))
  '(pdf-view-midnight-colors (cons "#d4d4d4" "#191919"))
  '(rustic-ansi-faces
    ["#191919" "#FF5E5E" "#468800" "#E9FDAC" "#8CDAFF" "#C586C0" "#85DDFF" "#d4d4d4"])

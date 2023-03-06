@@ -152,3 +152,10 @@
 (setq doom-catppuccin-dark-variant "mocha") ;; "latte", "frappe" or "macchiato"
 
 (setq org-babel-python-command "python3.10")
+
+(require 'org-download)
+
+;; Drag-and-drop to `dired`
+(add-hook 'dired-mode-hook 'org-download-enable)
+
+(setq org-startup-with-inline-images t)

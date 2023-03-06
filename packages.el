@@ -9,7 +9,8 @@
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 (package! org-bullets)
 (package! beacon)
-(package!ox-twbs)
+(package! ox-twbs)
+(package! org-download)
 
 (package! catppuccin
   :recipe (:host github :repo "catppuccin/emacs"))
