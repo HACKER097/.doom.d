@@ -11,6 +11,8 @@
 (package! beacon)
 (package! ox-twbs)
 (package! org-download)
+(package! mini-frame)
+(package! windresize)
 
 (package! catppuccin
   :recipe (:host github :repo "catppuccin/emacs"))
