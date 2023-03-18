@@ -79,65 +79,17 @@
 
 ;;(set-fontset-font 'doom-dashboard-banner (font-spec :family "Hack":size 20))
 
+(cua-mode)
 
-(custom-theme-set-faces! 'doom-tokyo-night
-  '(doom-dashboard-banner  :height 250)
-  '(doom-dashboard-footer :inherit font-lock-constant-face)
-  '(doom-dashboard-footer-icon :inherit all-the-icons-red)
-  '(doom-dashboard-loaded :inherit font-lock-warning-face)
-  '(doom-dashboard-menu-desc :inherit font-lock-string-face)
-  '(doom-dashboard-menu-title :inherit font-lock-function-name-face))
+(global-set-key (kbd "C-x w") #'windresize)
 
-(custom-set-variables
- '(mini-frame-show-parameters
-   '((top . 10)
-     (width . 0.7)
-     (left . 0.5))))
-
-(defun doom-dashboard-draw-ascii-banner-fn ()
-  (let* ((banner
-                '("______ _____ ____ ___ ___"
-                "`  _  V  _  V  _ \\|  V  ´"
-                "| | | | | | | | | |     |"
-                "| | | | | | | | | | . . |"
-                "| |/ / \\ \\| | |/ /\\ |V| |"
-                "|   /   \\__/ \\__/  \\| | |"
-                "|  /                ' | |"
-                "| /      ई मे क् स      \\ |"
-                "‾‾                     ‾‾"))
-         (longest-line (apply #'max (mapcar #'length banner))))
-    (put-text-property
-     (point)
-     (dolist (line banner (point))
-       (insert (+doom-dashboard--center
-                (/ +doom-dashboard--width 2.5) ;; Have to re-align the banner manually in respect to scaling it
-                (concat
-                 line (make-string (max 0 (- longest-line (length line)))
-                                   32)))
-               "\n"))
-     'face 'doom-dashboard-banner)))
-
-;; To remove top padding let's override that fn too
-(defun +doom-dashboard-resize-h (&rest _)
-  "Recenter the dashboard, and reset its margins and fringes."
-  (let (buffer-list-update-hook
-        window-configuration-change-hook
-        window-size-change-functions)
-    (when-let (windows (get-buffer-window-list (doom-fallback-buffer) nil t))
-      (dolist (win windows)
-        (set-window-start win 0)
-        (set-window-fringes win 0 0)
-        (set-window-margins win (max 0 (/ (- (window-total-width win) +doom-dashboard--width) 2))))
-      (with-current-buffer (doom-fallback-buffer)
-        (save-excursion
-          (with-silent-modifications
-            (goto-char (point-min))
-            (delete-region (line-beginning-position)
-                           (save-excursion (skip-chars-forward "\n")
-                                           (point)))
-            ))))))
+(if (eq initial-window-system 'x)                 ; if started by emacs command or desktop file
+    (toggle-frame-maximized)
+  (toggle-frame-fullscreen))
 
 (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-footer)
+(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
+
 (setq locale-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8-unix)
 (set-keyboard-coding-system 'utf-8)
@@ -148,9 +100,6 @@
 
 (setq-default cursor-type 'bar)
 
-(setq doom-theme 'doom-catppuccin)
-(setq doom-catppuccin-dark-variant "mocha") ;; "latte", "frappe" or "macchiato"
-
 (setq org-babel-python-command "python3.10")
 
 (require 'org-download)
@@ -159,3 +108,25 @@
 (add-hook 'dired-mode-hook 'org-download-enable)
 
 (setq org-startup-with-inline-images t)
+
+(after! org
+  (setq-local org-latex-create-formula-image-program 'dvipng)
+
+  (defun my-org-latex-preview-on-dollar-sign ()
+    "Enable `org-latex-preview` when typing space or enter after a dollar sign."
+    (when (and (eq major-mode 'org-mode)
+               (or (eq (char-before) ?$)
+                   (eq (char-after) ?$)))
+      (with-silent-modifications
+        (org-latex-preview))))
+
+  (byte-compile 'my-org-latex-preview-on-dollar-sign)
+  (add-hook 'post-self-insert-hook #'my-org-latex-preview-on-dollar-sign))
+
+(defun my-org-show-all-previews ()
+  "Show all LaTeX previews in the current Org mode buffer."
+  (interactive)
+  (org-latex-preview '(16)))
+
+(add-hook 'org-mode-hook #'my-org-show-all-previews)
+
