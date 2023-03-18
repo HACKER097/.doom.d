@@ -3,47 +3,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-   ["#191919" "#FF5E5E" "#468800" "#E9FDAC" "#8CDAFF" "#C586C0" "#85DDFF" "#d4d4d4"])
- '(custom-enabled-themes '(doom-tokyo-night))
+ '(cua-mode t nil (cua-base))
+ '(custom-enabled-themes '(doom-moonlight))
  '(custom-safe-themes
-   '("60ada0ff6b91687f1a04cc17ad04119e59a7542644c7c59fc135909499400ab8" "f458b92de1f6cf0bdda6bce23433877e94816c3364b821eb4ea9852112f5d7dc" "016f665c0dd5f76f8404124482a0b13a573d17e92ff4eb36a66b409f4d1da410" "2e05569868dc11a52b08926b4c1a27da77580daa9321773d92822f7a639956ce" "6945dadc749ac5cbd47012cad836f92aea9ebec9f504d32fe89a956260773ca4" "683b3fe1689da78a4e64d3ddfce90f2c19eb2d8ab1bab1738a63d8263119c3f4" "944d52450c57b7cbba08f9b3d08095eb7a5541b0ecfb3a0a9ecd4a18f3c28948" "adaf421037f4ae6725aa9f5654a2ed49e2cd2765f71e19a7d26a454491b486eb" "7a424478cb77a96af2c0f50cfb4e2a88647b3ccca225f8c650ed45b7f50d9525" "aec7b55f2a13307a55517fdf08438863d694550565dee23181d2ebd973ebd6b8" default))
- '(exwm-floating-border-color "#121212")
- '(fci-rule-color "#515151")
- '(highlight-tail-colors ((("#1d2416" "#1d2416") . 0) (("#232c30" "#202c30") . 20)))
- '(jdee-db-active-breakpoint-face-colors (cons "#171F24" "#FFFFFF"))
- '(jdee-db-requested-breakpoint-face-colors (cons "#171F24" "#468800"))
- '(jdee-db-spec-breakpoint-face-colors (cons "#171F24" "#777778"))
+   '("991ca4dbb23cab4f45c1463c187ac80de9e6a718edc8640003892a2523cb6259" "683b3fe1689da78a4e64d3ddfce90f2c19eb2d8ab1bab1738a63d8263119c3f4" "2078837f21ac3b0cc84167306fa1058e3199bbd12b6d5b56e3777a4125ff6851" "5586a5db9dadef93b6b6e72720205a4fa92fd60e4ccfd3a5fa389782eab2371b" "8d8207a39e18e2cc95ebddf62f841442d36fcba01a2a9451773d4ed30b632443" "0c08a5c3c2a72e3ca806a29302ef942335292a80c2934c1123e8c732bb2ddd77" "8b6506330d63e7bc5fb940e7c177a010842ecdda6e1d1941ac5a81b13191020e" "b99e334a4019a2caa71e1d6445fc346c6f074a05fcbb989800ecbe54474ae1b0" "ff24d14f5f7d355f47d53fd016565ed128bf3af30eb7ce8cae307ee4fe7f3fd0" "016f665c0dd5f76f8404124482a0b13a573d17e92ff4eb36a66b409f4d1da410" "8d3ef5ff6273f2a552152c7febc40eabca26bae05bd12bc85062e2dc224cde9a" "2721b06afaf1769ef63f942bf3e977f208f517b187f2526f0e57c1bd4a000350" "4fda8201465755b403a33e385cf0f75eeec31ca8893199266a6aeccb4adedfa4" "944d52450c57b7cbba08f9b3d08095eb7a5541b0ecfb3a0a9ecd4a18f3c28948" "bf948e3f55a8cd1f420373410911d0a50be5a04a8886cabe8d8e471ad8fdba8e" "7a424478cb77a96af2c0f50cfb4e2a88647b3ccca225f8c650ed45b7f50d9525" "702c248c69a9bf7b28a9416991cd3845035aea911ff1cc58721ab598613765fa" "56044c5a9cc45b6ec45c0eb28df100d3f0a576f18eef33ff8ff5d32bac2d9700" "545ab1a535c913c9214fe5b883046f02982c508815612234140240c129682a68" "1cae4424345f7fe5225724301ef1a793e610ae5a4e23c023076dc334a9eb940a" "1a1ac598737d0fcdc4dfab3af3d6f46ab2d5048b8e72bc22f50271fd6d393a00" "aec7b55f2a13307a55517fdf08438863d694550565dee23181d2ebd973ebd6b8" "60ada0ff6b91687f1a04cc17ad04119e59a7542644c7c59fc135909499400ab8" default))
  '(mini-frame-mode t)
  '(mini-frame-show-parameters '((top . 10) (width . 0.7) (left . 0.5)))
- '(objed-cursor-color "#FF5E5E")
- '(package-selected-packages
-   '(org-download ox-twbs catppuccin-theme mini-frame org-roam-ui org-roam exwm unicode-fonts ox-pandoc org-beautify-theme))
- '(pdf-view-midnight-colors (cons "#d4d4d4" "#191919"))
- '(rustic-ansi-faces
-   ["#191919" "#FF5E5E" "#468800" "#E9FDAC" "#8CDAFF" "#C586C0" "#85DDFF" "#d4d4d4"])
- '(vc-annotate-background "#191919")
- '(vc-annotate-color-map
-   (list
-    (cons 20 "#468800")
-    (cons 40 "#7caf39")
-    (cons 60 "#b2d672")
-    (cons 80 "#E9FDAC")
-    (cons 100 "#efd98e")
-    (cons 120 "#f5b671")
-    (cons 140 "#FC9354")
-    (cons 160 "#e98e78")
-    (cons 180 "#d78a9c")
-    (cons 200 "#C586C0")
-    (cons 220 "#d8789f")
-    (cons 240 "#eb6b7e")
-    (cons 260 "#FF5E5E")
-    (cons 280 "#dd6464")
-    (cons 300 "#bb6a6b")
-    (cons 320 "#997071")
-    (cons 340 "#515151")
-    (cons 360 "#515151")))
- '(vc-annotate-very-old-color nil))
+ '(package-selected-packages '(dad-joke chess windower windresize lsp-mode mini-frame)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
