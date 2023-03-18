@@ -67,7 +67,7 @@
        ;;word-wrap         ; soft wrapping with language-aware indent
 
        :emacs
-       dired             ; making dired pretty [functional]
+       ;;dired             ; making dired pretty [functional]
        electric          ; smarter, keyword-based electric-indent
        ;;ibuffer         ; interactive buffer management
        undo              ; persistent, smarter undo for your inevitable mistakes
@@ -80,9 +80,9 @@
        vterm             ; the best terminal emulation in Emacs
 
        :checkers
-       syntax              ; tasing you for every semicolon you forget
-       (spell +flyspell) ; tasing you for misspelling mispelling
-       grammar           ; tasing grammar mistake every you make
+       ;;     syntax              ; tasing you for every semicolon you forget
+       ;;(spell +flyspell) ; tasing you for misspelling mispelling
+       ;;grammar           ; tasing grammar mistake every you make
 
        :tools
        ;;ansible
@@ -158,7 +158,7 @@
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
-       python            ; beautiful is better than ugly
+       (python +lsp)            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
@@ -194,8 +194,6 @@
        ;;literate
        (default +bindings +smartparens))
 
-
-
 (setq org-ellipsis ":")
 (setq org-bullets-bullet-list '("●" "◉" "○" "◌" "✸" "★" "✭" "☆" "⚬"))
 (custom-set-faces
@@ -212,7 +210,10 @@
 
 )
 
+
 (setq org-support-shift-select t)
+
+(setq doom-font (font-spec :family "Monospace" :size 17))
 
 (setq org-odt-preferred-output-format "doc")
 (defun hm/convert-org-to-docx-with-pandoc ()
@@ -229,3 +230,13 @@ Comments:
            (file-name-sans-extension (buffer-file-name))
            (format-time-string "-%Y-%m-%d-%H%M%S") ".docx")))
 
+(setq python-shell-interpreter "python3.10"
+      python-shell-interpreter-args "-i"
+      python-shell-prompt-regexp ">>> "
+      python-shell-prompt-output-regexp ""
+      python-shell-completion-setup-code
+      "from IPython.core.completerlib import module_completion"
+      python-shell-completion-module-string-code
+      "';'.join(module_completion('''%s'''))\n"
+      python-shell-completion-string-codex
+      "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
